@@ -69,7 +69,7 @@ export const Auth = () => {
             <Input value={email} onChange={(e) => updateValues("email", e.target.value)} placeholder='Enter your email...'></Input>
             <Input value={password} onChange={(e) => updateValues("password", e.target.value)} placeholder='Enter your password...' type="password"></Input>
             <LoginButton type="submit" >{!signUpState ? "Entrar" : "Cadastre-se"}</LoginButton>
-            <SignUpButton onClick={() => setSignUpState(prev => !prev)}>{!signUpState ? "Criar nova conta" : "Entrar com conta existente"}</SignUpButton>
+            <SignUpButton type="button" onClick={() => setSignUpState(prev => !prev)}>{!signUpState ? "Criar nova conta" : "Entrar com conta existente"}</SignUpButton>
             {error && <p style={{ color: "red" }}>Ocorreu um erro, por favor verifique o console</p>}
         </AuthContainer>
     )
