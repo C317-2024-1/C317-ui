@@ -49,8 +49,7 @@ export const Auth = () => {
 
     const signUp = () => {
         api.signUp({ name, email, password }).then(res => {
-            setUser({name, email})
-            navigate("/")
+            signIn()
         }).catch(error => {
             console.error(error);
             clearFields()

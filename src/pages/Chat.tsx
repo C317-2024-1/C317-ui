@@ -54,10 +54,10 @@ export const Chat = () => {
                         {messages.sort((a, b) => a.date - b.date).map((msg, index) => (
                             <MessageComponent message={msg} key={index}></MessageComponent>
                         ))}
-                        <ChatBox sendFunction={addNewMessage}></ChatBox>
                     </>
                 ) : null
             }
+            <ChatBox sendFunction={addNewMessage}></ChatBox>
         </Container>
     )
 }
