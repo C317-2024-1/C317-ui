@@ -38,7 +38,7 @@ export const Auth = () => {
     const signIn = () => {
         api.signIn({ email, password }).then((res: {"c317-jwt": string}) => {
             setUser({name, email})
-            document.cookie = `c317-jwt=${res["c317-jwt"]}`
+            document.cookie = `c317-jwt=${res["c317-jwt"]}; expires= ${new Date(new Date().getTime() + 1*60*60*1000).toUTCString()}; path=/;`
             navigate("/")
         }).catch(error => {
             console.error(error);

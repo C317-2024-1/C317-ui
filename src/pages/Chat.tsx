@@ -8,6 +8,7 @@ import { Message as MessageType } from '../types'
 
 export const Chat = () => {
     const [messages, setMessages] = useState<MessageType[]>([])
+    const [error, setError] = useState("")
     const { user, setUser } = useUserData();
     const navigate = useNavigate();
 
@@ -24,6 +25,8 @@ export const Chat = () => {
         }
         api.getMessages().then(res => {
             setMessages(res)
+        }).catch(error => {
+            setError(error.error)
         })
     }, [user])
 
@@ -44,10 +47,17 @@ export const Chat = () => {
 
     return (
         <Container key={messages.length}>
-            {messages.sort((a, b) => a.date - b.date).map((msg, index) => (
-                <MessageComponent message={msg} key={index}></MessageComponent>
-            ))}
-            <ChatBox sendFunction={addNewMessage}></ChatBox>
+            {error ? <h1>{error}</h1> : null}
+            {
+                messages.length ? (
+                    <>
+                        {messages.sort((a, b) => a.date - b.date).map((msg, index) => (
+                            <MessageComponent message={msg} key={index}></MessageComponent>
+                        ))}
+                        <ChatBox sendFunction={addNewMessage}></ChatBox>
+                    </>
+                ) : null
+            }
         </Container>
     )
 }
