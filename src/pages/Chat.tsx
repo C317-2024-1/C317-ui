@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChatBox, Message as MessageComponent } from '../components'
-import { Container } from '../styles'
+import { Container, LogoutButton } from '../styles'
 import { useUserData } from '../contexts/User'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
@@ -45,8 +45,16 @@ export const Chat = () => {
         })
     }
 
+    const logout = ()=>{
+        document.cookie = `c317-jwt=123; expires= ${new Date(new Date().getTime() + 1).toUTCString()}; path=/;`
+        setTimeout(()=>{
+            location.reload()
+        }, 100)
+    }
+
     return (
         <Container key={messages.length}>
+            <LogoutButton onClick={logout}>Sair</LogoutButton>
             {error ? <h1>{error}</h1> : null}
             {
                 messages.length ? (

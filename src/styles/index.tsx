@@ -22,6 +22,7 @@ export const Container = styled.div`
     height: 90dvh;
     padding: 20px;
 
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -107,5 +108,24 @@ export const SignUpButton = styled.button`
     &:hover{
         text-decoration: underline;
         color: ${({ theme }) => theme.colors.white};
+    }
+`
+
+export const LogoutButton = styled.button`
+    width: 100px;
+    padding: 10px;
+    border: none;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: ${({ theme }) => theme.font.sizes.md};
+    box-sizing: border-box;
+    position: absolute;
+    top: ${({ theme }) => theme.font.sizes.md};
+    right: ${({ theme }) => theme.font.sizes.md};
+
+    &:hover{
+        background-color: ${({ theme }) => theme.colors.white + "2f"};
     }
 `
