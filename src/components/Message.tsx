@@ -27,7 +27,7 @@ export const Message = ({ message }: Props) => {
     const getTimeFormated = (time: number) => {
         const now = new Date().getTime();
         if (now - time > 24 * 60 * 60 * 1000) {
-            return new Date(time).toLocaleDateString()
+            return new Date(time).toLocaleString()
         }
         return new Date(time).toLocaleTimeString()
     }
