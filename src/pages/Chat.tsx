@@ -24,7 +24,13 @@ export const Chat = () => {
             return
         }
         api.getMessages().then(res => {
-            setMessages(res)
+            if(!res || !res.length)
+                return setMessages([])
+            setMessages(res.map((el: MessageType)=>({
+                message: el.message,
+                date: new Date(el.date).getTime(),
+                isUserMessage: el.isUserMessage,
+            })))
         }).catch(error => {
             setError(error.error)
         })
