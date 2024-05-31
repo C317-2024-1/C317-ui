@@ -64,9 +64,9 @@ export const Auth = () => {
     return (
         <AuthContainer onSubmit={submit}>
             {signUpState &&
-                <Input value={name} onChange={(e) => updateValues("name", e.target.value)} placeholder='Enter your name...'></Input>}
-            <Input value={email} onChange={(e) => updateValues("email", e.target.value)} placeholder='Enter your email...'></Input>
-            <Input value={password} onChange={(e) => updateValues("password", e.target.value)} placeholder='Enter your password...' type="password"></Input>
+                <Input value={name} onChange={(e) => updateValues("name", e.target.value)} placeholder='Preencha seu nome...'></Input>}
+            <Input value={email} onChange={(e) => updateValues("email", e.target.value)} placeholder='Preencha seu email...'></Input>
+            <Input value={password} onChange={(e) => updateValues("password", e.target.value)} placeholder='Preencha sua senha...' type="password"></Input>
             <LoginButton type="submit" >{!signUpState ? "Entrar" : "Cadastre-se"}</LoginButton>
             <SignUpButton type="button" onClick={() => setSignUpState(prev => !prev)}>{!signUpState ? "Criar nova conta" : "Entrar com conta existente"}</SignUpButton>
             {error && <p style={{ color: "red" }}>Ocorreu um erro, por favor verifique o console</p>}
